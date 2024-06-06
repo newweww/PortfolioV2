@@ -1,10 +1,10 @@
 "use client"
 
-import { SiReact, SiNextdotjs, SiNodedotjs, SiBootstrap, SiTailwindcss, SiMysql, SiMongodb } from "react-icons/si"
+import { SiReact, SiNextdotjs, SiNodedotjs, SiBootstrap, SiTailwindcss, SiMysql, SiMongodb, SiPrisma  } from "react-icons/si"
 
 const about = {
   title: 'About Me',
-  description: 'I am a Full',
+  description: 'I’m New, a university student studying Information Technology. This portfolio showcases my skills, projects, and academic achievements.',
   info: [
     {
       fieldName: 'Name',
@@ -25,7 +25,7 @@ const about = {
 const education = {
   icon: 'assets/resume/cap.svg',
   title: 'Education',
-  description: 'I am a Full',
+  description: "This is my journey in programming education. Through study and practice, I've developed software development skills, emphasizing efficiency and innovation.",
   items: [
     {
       institution: 'Kasetsart University',
@@ -43,7 +43,7 @@ const education = {
 
 const skills = {
   title: 'Skills',
-  description: 'I am a Full',
+  description: 'Explore my skills and abilities, including programming and problem-solving. Learn how I can assist with your projects.',
   skillList: [
     {
       icon: <SiReact />,
@@ -64,6 +64,10 @@ const skills = {
     {
       icon: <SiTailwindcss />,
       name: 'tailwindcss',
+    },
+    {
+      icon: <SiPrisma />,
+      name: 'prisma', 
     },
     {
       icon: <SiMysql />,
@@ -89,7 +93,7 @@ const Resume = () => {
         opacity: 1,
         transition: { delay: 1.4, duration: 0.4, ease: "easeIn" }
       }}
-      className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0 zoom80"
+      className="min-h-[80vh] flex items-center justify-center py-12 zoom80"
     >
       <div className="container mx-auto">
         <Tabs defaultValue="about" className="flex flex-col xl:flex-row gap-[60px]">
@@ -106,11 +110,11 @@ const Resume = () => {
               <div className="flex flex-col gap-[30px]">
                 <h3 className="text-4xl font-bold">{about.title}</h3>
                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{about.description}</p>
-                <ul>
+                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0">
                   {about.info.map((item, index) => {
-                    return <li key={index}>
-                      <span>{item.fieldName}</span>
-                      <span>{item.fieldValue}</span>
+                    return <li key={index} className="flex items-center justify-center xl:justify-start gap-4 ">
+                      <span className="text-white/60">{item.fieldName}</span>
+                      <span className="text-xl">{item.fieldValue}</span>
                     </li>
                   })}
                 </ul>
