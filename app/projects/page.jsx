@@ -158,6 +158,8 @@ const Projects = () => {
     >
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row xl:gap-[30px]">
+          
+          {/* Info */}
           <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
             <div className="flex flex-col gap-[30px] h-[50%]">
               <div className="text-8xl leading-none font-extrabold text-transparent text-outline" >
@@ -178,7 +180,7 @@ const Projects = () => {
 
               <div className="flex items-center gap-4">
                 {/* Live project */}
-                <Link href={project.live}>
+                { project.live.length > 0 ? <Link href={project.live}>
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
@@ -189,7 +191,7 @@ const Projects = () => {
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
-                </Link>
+                </Link> : null}
 
                 {/* Github */}
                 <Link href={project.github}>
@@ -208,6 +210,8 @@ const Projects = () => {
               </div>
             </div>
           </div>
+
+          {/* Swiper */}
           <div className="w-full xl:w-[50%]">
             <Swiper spaceBetween={30} slidesPerView={1} className="xl:h-[520px] mb-12" onSlideChange={handleSlideChange}>
               {projectsData.map((project, index) => {
