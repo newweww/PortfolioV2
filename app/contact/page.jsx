@@ -8,6 +8,8 @@ import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa"
 
 import { delay, motion } from "framer-motion"
 
+import { useState } from "react"
+
 const info = [
   {
     icon: <FaPhoneAlt />,
@@ -27,6 +29,48 @@ const info = [
 ]
 
 const Contact = () => {
+
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [name, setName] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [phone, setPhone] = useState('');
+  const [responseMessage, setResponseMessage] = useState('');
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const finalSubject = `ส่งจาก ${name} ${lastname}`;
+    const finalMessage = `
+      ชื่อ : ${name} ${lastname}
+      เบอร์ : ${phone}
+      อีเมล : ${email}
+      ข้อความ : ${message}
+    `;
+
+    const res = await fetch('/api/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: email, subject: finalSubject, message: finalMessage }),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      setResponseMessage(data.message);
+      setEmail('');
+      setMessage(''); 
+      setName('');
+      setLastname('');
+      setPhone('');
+    } else {
+      setResponseMessage(data.error);
+    }
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -45,18 +89,18 @@ const Contact = () => {
 
           {/* form */}
           <div className="xl:w-[54%] order-2 xl:order-none">
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
               <h3 className="text-4xl text-accent">{`Let's work together`}</h3>
               <p className="text-white/60">Descropewqrwfgjsklgnsjklfghsujgsd</p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firstname" placeholder="Firstname" />
-                <Input type="lastname" placeholder="Lastname" />
-                <Input type="email" placeholder="Email" />
-                <Input type="phone" placeholder="Phone number" />
+                <Input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Firstname" />
+                <Input type="text" value={lastname} onChange={(e) => setLastname(e.target.value)} placeholder="Lastname" />
+                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+                <Input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Phone number" />
               </div>
 
-              <Textarea className="h-[200px]" placeholder="Type youe message here" />
+              <Textarea className="h-[200px]" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Type youe message here" />
 
               <Button className="max-w-40">Send message</Button>
 
