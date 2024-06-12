@@ -171,7 +171,6 @@ const Projects = () => {
                 {project.stack.map((item, index) => {
                   return <li key={index} className="text-xl text-accent">
                     {item.name}
-                    {index !== project.stack.length - 1 && " , "}
                   </li>
                 })}
               </ul>
