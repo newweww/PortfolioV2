@@ -1,6 +1,7 @@
 "use client"
 
-import { SiReact, SiNextdotjs, SiNodedotjs, SiBootstrap, SiTailwindcss, SiMysql, SiMongodb, SiPrisma  } from "react-icons/si"
+import { SiReact, SiNextdotjs, SiNodedotjs, SiBootstrap, SiTailwindcss, SiMysql, SiMongodb, SiPrisma, SiPostman, SiJavascript, SiPostgresql ,SiNuxtdotjs   } from "react-icons/si"
+import { FaGithub, FaHtml5 ,FaCss3Alt, FaFigma } from "react-icons/fa";
 
 const about = {
   title: 'About Me',
@@ -44,7 +45,25 @@ const education = {
 const skills = {
   title: 'Skills',
   description: 'Explore my skills and abilities, including programming and problem-solving. Learn how I can assist with your projects.',
-  skillList: [
+  langList: [
+    {
+      icon: <FaHtml5 />,
+      name: 'html5',
+    },
+    {
+      icon: <FaCss3Alt />,
+      name: 'css3',
+    },
+    {
+      icon: <SiJavascript />,
+      name: 'javascript',
+    },
+  ],
+  frameworkList: [
+    {
+      icon: <SiNodedotjs />,
+      name: 'node.js',
+    },
     {
       icon: <SiReact />,
       name: 'react.js',
@@ -54,8 +73,8 @@ const skills = {
       name: 'next.js',
     },
     {
-      icon: <SiNodedotjs />,
-      name: 'node.js',
+      icon: <SiNuxtdotjs />,
+      name: 'nuxt.js',
     },
     {
       icon: <SiBootstrap />,
@@ -65,17 +84,37 @@ const skills = {
       icon: <SiTailwindcss />,
       name: 'tailwindcss',
     },
-    {
-      icon: <SiPrisma />,
-      name: 'prisma', 
-    },
+  ],
+  databaseList: [
     {
       icon: <SiMysql />,
       name: 'mysql',
     },
     {
+      icon: <SiPostgresql />,
+      name: 'postgresql',
+    },
+    {
       icon: <SiMongodb />,
       name: 'mongodb',
+    },
+  ],
+  toolList: [
+    {
+      icon: <FaGithub />,
+      name: 'github',
+    },
+    {
+      icon: <SiPostman />,
+      name: 'postman',
+    },
+    {
+      icon: <FaFigma />,
+      name: 'figma',
+    },
+    {
+      icon: <SiPrisma />,
+      name: 'prisma',
     },
   ]
 }
@@ -158,22 +197,86 @@ const Resume = () => {
                   <h3 className="text-4xl font-bold">{skills.title}</h3>
                   <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{skills.description}</p>
                 </div>
-                <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 xl:gap-[30px]">
-                  {skills.skillList.map((skill, index) => {
-                    return <li key={index}>
-                      <TooltipProvider delayDuration={100}>
-                        <Tooltip>
-                          <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                            <div className="text-6xl group-hover:text-accent transition-all duration-300">{skill.icon}</div>
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p className="capitalize">{skill.name}</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    </li>
-                  })}
-                </ul>
+                <div className="grid grid-cols-1 gap-4 sm:flex sm:flex-row sm:justify-around">
+                  <div className="flex flex-col min-w-10">
+                    <h3 className="text-2xl font-bold">Language</h3>
+                    <ul className="grid grid-cols-4 gap-4 sm:grid-cols-1 md:grid-cols-1 xl:gap-[10px]">
+                      {skills.langList.map((Lang, index) => {
+                        return <li key={index}>
+                          <TooltipProvider delayDuration={100}>
+                            <Tooltip>
+                              <TooltipTrigger className="w-[100px] h-[100px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                                <div className="text-6xl group-hover:text-accent transition-all duration-300">{Lang.icon}</div>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p className="capitalize">{Lang.name}</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        </li>
+                      })}
+                    </ul>
+                  </div>
+              
+                  <div className="flex flex-col">
+                  <h3 className="text-2xl font-bold">Framework</h3>
+                  <ul className="grid grid-cols-4 gap-4 sm:grid-cols-1 md:grid-cols-2 xl:gap-[10px]">
+                    {skills.frameworkList.map((framework, index) => {
+                      return <li key={index}>
+                        <TooltipProvider delayDuration={100}>
+                          <Tooltip>
+                            <TooltipTrigger className="w-[100px] h-[100px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                              <div className="text-6xl group-hover:text-accent transition-all duration-300">{framework.icon}</div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className="capitalize">{framework.name}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </li>
+                    })}
+                  </ul>
+                  </div>
+                  <div className="flex flex-col">
+                  <h3 className="text-2xl font-bold">Database</h3>
+                  <ul className="grid grid-cols-4 gap-4 sm:grid-cols-1 md:grid-cols-1 xl:gap-[10px]">
+                    {skills.databaseList.map((database, index) => {
+                      return <li key={index}>
+                        <TooltipProvider delayDuration={100}>
+                          <Tooltip>
+                            <TooltipTrigger className="w-[100px] h-[100px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                              <div className="text-6xl group-hover:text-accent transition-all duration-300">{database.icon}</div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className="capitalize">{database.name}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </li>
+                    })}
+                  </ul>
+                  </div>
+                  <div className="flex flex-col">
+                  <h3 className="text-2xl font-bold">Tools</h3>
+                  <ul className="grid grid-cols-4 gap-4 sm:grid-cols-1 md:grid-cols-1 xl:gap-[10px]">
+                    {skills.toolList.map((tool, index) => {
+                      return <li key={index}>
+                        <TooltipProvider delayDuration={100}>
+                          <Tooltip>
+                            <TooltipTrigger className="w-[100px] h-[100px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                              <div className="text-6xl group-hover:text-accent transition-all duration-300">{tool.icon}</div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className="capitalize">{tool.name}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </li>
+                    })}
+                  </ul>
+
+                  </div>
+                </div>
               </div>
             </TabsContent>
 
