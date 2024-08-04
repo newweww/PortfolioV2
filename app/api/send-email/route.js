@@ -3,14 +3,13 @@ import nodemailer from 'nodemailer';
 export async function POST(request) {
     const { email, subject, message } = await request.json();
 
-    // Create a transporter object using SMTP transport for Hotmail
     let transporter = nodemailer.createTransport({
         host: 'smtp-mail.outlook.com',
         port: 587,
-        secure: false, // true for 465, false for other ports
+        secure: false,
         auth: {
-            user: process.env.EMAIL_USER, // Your Hotmail email address
-            pass: process.env.EMAIL_PASS, // Your Hotmail email password
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS, 
         },
     });
 

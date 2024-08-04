@@ -198,7 +198,7 @@ const Resume = () => {
                   <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{skills.description}</p>
                 </div>
                 <div className="grid grid-cols-1 gap-4 sm:flex sm:flex-row sm:justify-around">
-                  <div className="flex flex-col min-w-10">
+                  <div className="flex flex-col min-w-10 items-center">
                     <h3 className="text-2xl font-bold">Language</h3>
                     <ul className="grid grid-cols-4 gap-4 sm:grid-cols-1 md:grid-cols-1 xl:gap-[10px]">
                       {skills.langList.map((Lang, index) => {
@@ -218,7 +218,7 @@ const Resume = () => {
                     </ul>
                   </div>
               
-                  <div className="flex flex-col">
+                  <div className="flex flex-col items-center">
                   <h3 className="text-2xl font-bold">Framework</h3>
                   <ul className="grid grid-cols-4 gap-4 sm:grid-cols-1 md:grid-cols-2 xl:gap-[10px]">
                     {skills.frameworkList.map((framework, index) => {
@@ -237,7 +237,7 @@ const Resume = () => {
                     })}
                   </ul>
                   </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col items-center">
                   <h3 className="text-2xl font-bold">Database</h3>
                   <ul className="grid grid-cols-4 gap-4 sm:grid-cols-1 md:grid-cols-1 xl:gap-[10px]">
                     {skills.databaseList.map((database, index) => {
@@ -256,7 +256,7 @@ const Resume = () => {
                     })}
                   </ul>
                   </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col items-center">
                   <h3 className="text-2xl font-bold">Tools</h3>
                   <ul className="grid grid-cols-4 gap-4 sm:grid-cols-1 md:grid-cols-1 xl:gap-[10px]">
                     {skills.toolList.map((tool, index) => {
